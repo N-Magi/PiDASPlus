@@ -68,13 +68,14 @@ public:
         {
             acc1 -= coefsA[i] * dlyY[i];
 
-        dlyY[0] = (acc1 + acc2) / coefsA[0];
+            dlyY[0] = (acc1 + acc2) / coefsA[0];
 
-        for (int i = (coefALen)-1; i > 0; i--)
-            dlyY[i] = dlyY[i - 1];
+            for (int i = (coefALen)-1; i > 0; i--)
+                dlyY[i] = dlyY[i - 1];
 #ifdef DEBUG
-        Serial.printf("dlyY[0]:%f \r\n", dlyY[0]);
+            Serial.printf("dlyY[0]:%f \r\n", dlyY[0]);
 #endif
-        return dlyY[0];
+            return dlyY[0];
+        }
     }
 };
