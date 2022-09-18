@@ -22,6 +22,7 @@ public:
                 ;
         }
         mma.setRange(MMA8451_RANGE_4_G);
+        mma.setDataRate(MMA8451_DATARATE_100_HZ);
         mma.writeRegister8(0x2A, 0x00 | 0x01 | 0x04); // LNOISE
         mma.writeRegister8(0x2B, 0x10);
     }

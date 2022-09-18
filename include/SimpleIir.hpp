@@ -1,6 +1,6 @@
 #pragma once
 
-    class SimpleIir
+class SimpleIir
 {
 private:
     int coefALen;
@@ -27,11 +27,6 @@ public:
         for (int j = 0; j < coefALen; j++)
             dlyY[j] = 0.0;
     }
-    ~SimpleIir()
-    {
-        delete dlyX;
-        delete dlyY;
-    }
 
     void reset()
     {
@@ -47,18 +42,20 @@ public:
         float acc2 = 0.0;
         /* b coeficients*/
         dlyX[0] = input;
-
         for (int i = 0; i < coefBLen; i++)
             acc1 += coefsB[i] * dlyX[i];
         for (int i = (coefBLen)-1; i > 0; i--)
             dlyX[i] = dlyX[i - 1];
         /* a coeficients*/
+
         for (int i = 1; i < coefALen; i++)
             acc1 -= coefsA[i] * dlyY[i];
+
         dlyY[0] = (acc1 + acc2) / coefsA[0];
 
         for (int i = (coefALen)-1; i > 0; i--)
             dlyY[i] = dlyY[i - 1];
+
         return dlyY[0];
     }
 };
